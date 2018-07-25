@@ -1,0 +1,123 @@
+                               Java Collection
+
+JAVA COLLECTION: collection of object.
+
+Java collection has 3 interface:
+
+1.     Set: Set doesn’t allow duplicate value
+
+a.     HashSet
+
+b.     LinkedHashSet
+
+c.     TreeSet: TreeSet by Default sorted
+
+2.     List: list allows duplicate value
+
+a.     ArrayList
+
+b.     Vector
+
+c.     LinkedList
+
+ 
+
+3.     Queue
+
+a.     linkedList
+
+b.     PriorityQueue
+
+ 
+
+4.     Map:  No Duplicate Key. has Key & value. To add the value we use put(key, value) method. To print set value use KeySet() method & to get the value use Values() method.
+
+a      HashTable
+
+b      HashMap
+
+c       LinkedHashMap: suitable for frequent insertion and removing of elements.
+
+d      TreeMap: By default sorted
+
+Iterator:
+
+·       is a interface. To do loop iterator use
+
+·      Comes from collection. In collection to do loop, iterator used.
+
+·      With .hasNext() method it gets Boolean true or false
+
+It will run till get true value
+
+·      To get value use .next() method and this method have to casting as String
+
+If want string value
+
+When to use List, Set and Map in Java
+Based upon our understanding of the difference between Set, List and Map we can now decide when to use List, Set or Map in Java.
+
+1) If you need to access elements frequently by using the index than List is a way to go. 
+Its implementation e.g. ArrayList provides faster access if you know index.
+
+
+2) If you want to store elements and want them to maintain an order on which they are inserted into 
+a collection then go for List again, as List is an ordered collection and maintain insertion order.
+
+
+3) If you want to create a collection of unique elements and don't want any duplicate than
+ choosing any Set implementation e.g. HashSet, LinkedHashSet or TreeSet. 
+
+
+
+
+
+Vector VS ArrayList
+Common property of Vector and ArrayList in Java
+
+1) Bother Vector and ArrayList are derived from AbstractList and implements List interface, 
+which means both of them are ordered collection and allows duplicates.
+
+2) Another similarity between Vector vs ArrayList is that both are index based Collection 
+and you can use get(index) method to retrieve objects from Vector and ArrayList.
+
+1.First and most common difference between Vector vs ArrayList is that 
+Vector is synchronized and thread-safe while ArrayList is neither Synchronized nor thread-safe.
+
+2) Second major difference on Vector vs ArrayList is Speed, which is directly related to previous difference. 
+Since Vector is synchronized, its slow and ArrayList is not synchronized its faster than Vector.
+
+3) Third difference on Vector vs ArrayList is that Vector is a legacy class and 
+initially it was not part of Java Collection Framework. From Java 1.4 Vector was retrofitted
+ to implement List interface and become part of Collection Framework.
+
+
+HashMap VS Hashset
+Similarities on HashMap and HashSet in Java
+Here are some of the common stuff between both of them:
+
+1) Both HashMap and HashSet are a hash based collection in Java.
+2) Both HashMap and HashSet are not synchronized and can not be shared between multiple threads.
+3) Iterator returned by HashMap's keySet() and HashSet are fail-fast and they throw ConcurrentModificationException 
+if they detect any structural change in Collection.
+
+4) Both HashMap and HashSet provided constant time performance for basic operations like put(), get() etc.
+5) Both HashSet and HashMap allows null values.
+
+Differences between HashSet and HashMap in Java
+Difference between HashSet vs HashMap in JavaAfter seeing similarities on HashMap and HashSet, now let's see some difference between them :
+
+1) The first and most significant difference between HashMap and HashSet is that HashMap is an implementation of Map interface while HashSet is an implementation of Set interface, which means HashMap is a key value based data-structure and HashSet guarantees uniqueness by not allowing duplicates.In reality, HashSet is a wrapper around HashMap in Java, if you look at the code of add(E e) method of HashSet.java you will see following code :
+
+public boolean add(E e) {
+        return map.put(e, PRESENT)==null;
+}
+
+where it's putting  Object into a map as key and value is a final object PRESENT which is a dummy.
+
+2) The second difference between HashMap and HashSet is that we use add() method
+ to put elements into Set but we use put() method to insert key and value into HashMap in Java.
+
+3) HashSet allows only one null key, but HashMap can allow one null key + multiple null values.
+
+

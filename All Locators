@@ -1,0 +1,90 @@
+*********************************Absolute Xpath & Relative Xpath********************
+* Absolute Xpath: is complete or full xpath of webElement.
+* it starts from <html> tag or starts from single slash(/)
+* in IE browser it's very hard to find element with absolute xpath. its very slow
+* but selenium webdriver is very fast. In that case you will get NoSuchElementFound Exception
+
+*Reletive Xpath: is start from the nearlest HTML element of webelement
+*it starts with double slash (//)
+* its more faster that Absolute xpath
+* WebElement firstName = driver.findElement(By.xpath("//input[@id='email']"))
+
+
+**************************************Locators*************************
+*ID = driver.findElement(By.id("//input[@id='email']").sendKeys("Nushrat"); 
+
+*Name = driver.findElement(By.name("Firstname")).sendKeys("Nushrat");
+
+*ClassName = driver.findElement(By.classname("Firstname")).getText();
+* sometimes className has spach that is compound class that selenium doesn't support
+* selenium support only single class
+so don't use classname
+
+*LinkText = driver.findElement(By.linkText("Why do I need to to this")).click;
+
+*partialLinkText = driver.findElement(By.partiallinkText("Why do I ....")).click();
+
+
+********************************How to generate xpath*****************************
+*Xpath = driver.findElement(By.xpath("//input[@id='email']").sendKeys("Nushrat");
+
+*Create the custom xpath: //tag[@attribute='value'] 
+
+***********************************Generate CSS Selector*****************************
+* Structure of CSS selectors: tag[attribute='value']
+* Css Selector is comes with HTML tags, attributes, values.
+* as xpath we don't have any tool to generate CSS Selectores for us. 
+WebElement firstName = driver.findElement(By.CSSSelector("input[id='email']"))
+
+
+***********************Create Dynamic CSS Selector*****************
+* CSS Selector Structure: tag[attribute='value']
+* In Dynamic Elements, there always a part of locator is fixed.
+	*Starting part fixed -- use carrot character (^)
+							input[id^='email'] 
+							
+	*Middle part fixed  --- use Asterisk sigh (*)
+							input[id*='email']
+							
+	*End part is fixed --- use Dollar sign($)
+							input[id$='email']
+	
+*******************Create Dynamic XPath**********************
+****to create own xpath in chrome use (ctrl+F)
+* XPath structure:  //tag[@attribute='value']
+*2 mrthod have :
+	1. starts-with = //tag[starts-with(@attribute,'fixed x-path')]
+					//input[starts-with(@id,'registrationform_first')]
+					
+	2. contains  = //tag[contains(@attribure,'fixed x-path')]
+					//input[contains(@id,'registrationform_first')]
+
+
+
+*for Link = //a[text()='Forgot account?']
+*		 = //a[contains(text(),'Forgot account?')]
+*button = //button[@type='submit' and @name='websubmit']
+		= //button[contains(text(),'Sign Up')]
+
+* CheckBox =
+*preceding-sibiling = driver.findelement(by.xpath("//label[text()='Male']//parent::span[@class='_5k_2 _5dba']
+						//preceding-sibling::span[@class='_5k_2 _5dba']//input[@name='sex']").click();
+
+
+
+
+
+
+
+
+
+Locators are used to location UI elements of a page like textbox field,
+	// button
+	/*
+	 * Locators: multiple attibute =
+	 * //input[@class='inputtext'][@name='pass'] OR =
+	 * //input[@id='email'OR @class='inputtext'] AND = //input[@id='email'
+	 * AND @class='inputtext'] Contains = //input[contains(@id,'email')]
+	 * //a[contains(@href,'edit.php')][text()='posts'] starts-with
+	 * =//id[starts-with(@id,'email')] Text = //*[text()='Howdy,admin)] tittle =
+	 * //a[@tittle='Go to Facebook Page']

@@ -1,0 +1,354 @@
+                                    API-Restful API
+
+Api key : be6e7ba0877714fea3886ede97088769
+ 
+
+Why API is getting popular?
+
+ 
+
+·      Testing for core functionality. It’s very fast to execute the program.
+
+Exmple: let’s say if you want to execute your login functionality like open url, enter username, enter password then click on login button. Then it takes may be 10 to 15 seconds to get the data. But API will take just 1 second to get the data. Because API work directly with the database. Because it doesn’t wait for UI. It directly work with web server.
+
+·      Time Effective/ Quick response time
+
+·      Language independent
+
+·      Easy integration with gui
+
+ 
+
+Tools(plug-in)
+
+·      PostMan Plugin
+
+·      RestLet Client
+
+·      SoupUI
+
+ 
+
+What is Rest-Assured?
+
+·      Rest-Assured is an open source java Domain-Specific Language(DSL).
+
+·      Using Rest-Assured we can eliminates large amount of code to test complex API response and output.
+
+·      It supports Both XML and JSON format
+
+ 
+
+Rest-Assured supports other requests
+
+·      POST
+
+·      GET  = it will give you the data
+
+·      PUT
+
+·      DELETE
+
+·      OPTIONS
+
+·      PATCH
+
+·      HEAD
+
+ 
+
+Pre-condition for Rest Assured
+
+·      Java
+
+·      Eclipse
+
+·      Maven
+
+·      TestNG
+
+ 
+
+Get the dependency:
+
+·      For Rest-Assured jar
+
+And put on your maven project under POM.XML file 
+
+
+<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+
+<dependency>
+
+    <groupId>io.rest-assured</groupId>
+
+    <artifactId>rest-assured</artifactId>
+
+    <version>3.0.2</version>
+
+</dependency>
+
+ 
+
+We need Postman extension of chrome
+
+ 
+
+Rest-Assured Java Project:
+
+ 
+
+//url:https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b1b15e88fa797225412429c1c50c122a1
+
+ 
+
+public class GetData {
+
+ 
+
+     @Test
+
+     public void testResponsecode(){
+
+     //sent the url and get the data
+
+     //Response resp =get("url");
+
+         
+
+     int code = get("url").getStatusCode();
+
+     System.out.println("Status code is " + code);
+
+     Assert.assertEquals(code, 200);
+
+         
+
+          }
+
+    
+
+     @Test
+
+     public void testBody(){
+
+ 
+
+     //sent the url and get the data
+
+     //Response resp =get("url");
+
+     String data = get("url").asString();
+
+     System.out.println("Data is " + data);
+
+         
+
+     long time = get("url").getTime();
+
+     System.out.println("Response time "+ time);
+
+     }}  
+
+How to perform post, delete, put in postman plugin & Rest Assured?
+
+So, postman plugin used for manual testing.
+
+But for Automation, use Rest assured.
+
+Get, Delete, Put will not create additional load on server while making multiple calls.
+
+Post= this can create load on server if made multiple calls.
+
+ 
+
+ 
+
+JSON= JavaScript Object Notation
+
+GET= read. This method simply retrieves data from server. No changes to server or resource.
+
+                         Exp: check any news, searching anything on web and so on.
+
+ 
+
+POST= send. This method perform the changes to server. It always creates resources in server.
+
+                         Exp: uploading the picture, send some writing post on your facebook.
+
+ 
+
+PUT=edit or update. It takes more time to execute. Suppose you want to edit or update 10 or 20 data or input. Then use PUT. This method update the existing resources.
+
+PATCH= edit or update. It takes less time to execute. Suppose you want to edit or update any specific data or input. Then then use PATCH.
+
+ 
+
+DELETE= Delete data. Exp: deleting any file, or any data from account.
+
+ 
+
+So to work with POST method:
+
+·      Need resource that you have to create, it’s a fake resource
+
+·      For fake resource you need to install == npm install –g json-server
+
+·      Make sure you have node & npm install that use this json-server link
+
+·      Pwd
+
+·      Json-server –watch db.json
+
+Now On the Postman:
+
+·      Select “Post” method
+
+·      Send the URL
+
+·      Select “body”
+
+·      Select “raw”
+
+·      {“id”: 21,
+
+“title”: “json-server21”,
+
+“author”: “typicode21”,
+
+}
+
+·      checked as json(applicaton/json)
+
+·      click on send. It will show the result on web site
+
+·      refresh the url and you can see it added in the server or resources.
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+API= Application Programming Interface
+
+REST= Representational State Transfer. It’s not a fully Web Service.
+
+Restful API is very popular now a days. Because with restful api you will get result in many format like HTML, XML, JSON and so on.
+
+§  API will design with pattern and with concept will organige REST-API.
+
+§  Arcitucture of API.
+
+§  Means we have API in a design pattern. Every developer will follow this API. And
+
+§  Example: in the database there have tables, and data. And all tables have relationship with each table. So those data will be set in a pattern and will be use those data so that pattern way is a REST. Now this Rest is organized in JSON format.
+
+REST behavior/actions are identified by HTTP methods (GET, POST, PUT, DELETE).
+
+
+
+
+public class GetData2 {
+
+
+
+	@Test
+
+	public void testResponsecode()
+
+{
+
+		//sent the url and get the data
+
+	Response resp =	RestAssured.get("https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b1b15e88fa797225412429c1c50c122a1"); 
+
+		int code = resp.getStatusCode();
+
+		System.out.println("Status code is " + code);
+
+		Assert.assertEquals(code, 200);
+
+		
+
+		}
+
+	
+
+	@Test
+
+	public void testBody()
+
+{
+
+		//sent the url and get the data
+
+	Response resp =	RestAssured.get("https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b1b15e88fa797225412429c1c50c122a1"); 
+
+		String data = resp.asString();
+
+		System.out.println("Data is " + data);
+
+		System.out.println("Response time "+ resp.time());
+
+		
+
+		}
+
+}
+
+
+========================POST=========================
+
+
+public class Post_Delete_PutExample3 {
+
+
+
+	@Test
+
+	public void test1() {
+
+
+
+
+
+		RequestSpecification request = RestAssured.given();
+
+		request.header("Content-Type", "application/json");
+
+
+
+		JSONObject json = new JSONObject();
+
+		json.put("id", "25");
+
+		json.put("title", "selenium");
+
+		json.put("author", "learn Automation");
+
+
+
+		request.body(json.toJSONString());
+
+
+
+		Response response = request.put("url");
+
+		int code = response.getStatusCode();
+
+		
+
+		System.out.println("response code " + code);
+
+		Assert.assertEquals(code, 201);
+
+	}
+
+
+
+}
